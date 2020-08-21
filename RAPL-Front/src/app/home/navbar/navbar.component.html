@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">{{title}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" >Contests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" >Blogs</a>
+      </li>
+    </ul>
+    <button *ngIf="!loggedIn && !registerd" type="button" class="btn btn-primary" (click)="openLoginDialog()">
+      Login
+    </button>
+    <button *ngIf="!loggedIn && !registerd" type="button" class="btn btn-primary" (click)="openRegistrationDialog()">
+      SignUp
+    </button>
+  </div>
+
+  <div *ngIf="(loggedIn || registerd)" class="btn-group" dropdown>
+    <button  id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-basic"> <i class="fa fa-user fa-fw"></i>
+      {{loggedInUserName}} <span class="caret"></span>
+    </button>
+    <div class="dropdown-menu mt-3" *dropdownMenu>
+      <a class="dropdown-item">Edit Profile</a>
+      <div class = "dropdown-divider"></div>
+      <a class="dropdown-item" (click)="logOut()">Log Out</a>
+    </div>
+  </div>
+</nav>
